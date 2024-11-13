@@ -12,7 +12,7 @@
       padding: 0;
       box-sizing: border-box;
     }
-
+  
     body {
       font-family: 'Indie Flower', cursive;
       color: #333;
@@ -25,10 +25,10 @@
       background: linear-gradient(135deg, #fcbad3, #ff7eb6); /* Pink gradient background by default */
       transition: background 1s ease-in-out; /* Smooth background transition */
     }
-
+  
     h2 {
-      font-size: 2rem; /* Larger font size for names */
-      margin: 10px;
+      font-size: 2.5rem; /* Larger font size for names */
+      margin: 15px;
       font-weight: bold;
       display: block;
       background: linear-gradient(135deg, #ff85a2, #f7468a); /* Gradient color for names */
@@ -37,7 +37,7 @@
       text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 0, 0, 0.4); /* Strong shadow for visibility */
       letter-spacing: 1px; /* Slight letter spacing for better readability */
     }
-
+  
     .container {
       display: flex;
       flex-direction: column; /* Stack the content vertically */
@@ -47,49 +47,49 @@
       max-width: 700px;
       margin-bottom: 20px;
     }
-
+  
     .dice {
       text-align: center;
-      font-size: 1.2rem;
-      margin-bottom: 20px;
+      font-size: 1.5rem;
+      margin-bottom: 30px;
     }
-
+  
     .dice img {
-      width: 150px;
-      height: 150px;
+      width: 200px; /* Increased dice size */
+      height: 200px;
       transition: transform 0.5s ease-in-out;
     }
-
+  
     .dice:hover img {
       transform: rotate(360deg);
     }
-
+  
     .btn-box {
-      margin-top: 20px;
+      margin-top: 30px;
     }
-
+  
     button {
       background-color: #ff6f61;
       border: none;
-      padding: 12px 30px;
+      padding: 20px 50px; /* Increased padding for larger button */
       color: white;
-      font-size: 1.2rem;
+      font-size: 1.5rem; /* Increased font size for button */
       cursor: pointer;
-      border-radius: 8px;
+      border-radius: 10px;
       transition: background-color 0.3s ease, transform 0.2s ease;
     }
-
+  
     button:hover {
       background-color: #e65c50;
       transform: scale(1.05);
     }
-
+  
     button:focus {
       outline: none;
     }
-
+  
     .winner {
-      font-size: 2rem;
+      font-size: 2.5rem; /* Larger font size for winner message */
       font-family: 'Lobster', cursive;
       color: #fff;
       margin-top: 20px;
@@ -98,7 +98,7 @@
       transform: translateY(-30px);
       animation: winner-appear 1s forwards;
     }
-
+  
     /* Animation for winner */
     @keyframes winner-appear {
       0% {
@@ -110,7 +110,46 @@
         transform: translateY(0);
       }
     }
+  
+    /* Responsive adjustments */
+    @media screen and (max-width: 768px) {
+      h2 {
+        font-size: 2rem; /* Adjust font size for smaller screens */
+      }
+  
+      .dice img {
+        width: 150px; /* Adjust dice image size for smaller screens */
+        height: 150px;
+      }
+  
+      button {
+        padding: 15px 40px; /* Adjust button padding for smaller screens */
+        font-size: 1.3rem; /* Adjust font size for button on mobile */
+      }
+    }
+  
+    /* Further adjustments for very small devices */
+    @media screen and (max-width: 480px) {
+      h2 {
+        font-size: 1.8rem; /* Smaller font size for very small screens */
+      }
+  
+      .dice img {
+        width: 120px; /* Even smaller dice size */
+        height: 120px;
+      }
+  
+      button {
+        padding: 12px 35px; /* Smaller button padding */
+        font-size: 1.2rem; /* Slightly smaller button text */
+      }
+  
+      .winner {
+        font-size: 2rem; /* Smaller winner text */
+      }
+    }
   </style>
+  
 </head>
 
 <body>
@@ -179,3 +218,4 @@
 </footer>
 
 </html>
+
