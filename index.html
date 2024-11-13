@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start Button</title>
+  <style>
+    /* Reset some default styles */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+    }
+
+    /* Background animation */
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #fffdff, #ffecf5);
+      background-size: 200% 200%;
+      animation: gradientAnimation 5s ease infinite;
+    }
+
+    /* Gradient animation for background */
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Centering the Start Button */
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Styling the Start Button */
+    .start-button {
+      padding: 20px 40px;
+      font-size: 24px;
+      color: white;
+      background-color: #007bff;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease-in-out;
+      position: relative;
+      z-index: 1;
+    }
+
+    .start-button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+      opacity: 0;
+      transition: opacity 0.3s;
+      border-radius: 50px;
+    }
+
+    /* Hover effect */
+    .start-button:hover {
+      background-color: #0056b3;
+      transform: scale(1.1);
+    }
+
+    .start-button:focus {
+      outline: none;
+    }
+
+    .start-button:active {
+      transform: scale(0.95);
+    }
+
+    .start-button:hover::before {
+      opacity: 1;
+    }
+
+    /* Stylish text effect */
+    .start-button span {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: white;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    /* Animation for the button text */
+    .start-button:hover span {
+      transform: translateY(-5px);
+    }
+
+    /* Keyframe for text glow effect */
+    @keyframes textGlow {
+      0% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #ff5f00, 0 0 15px #ff5f00;
+      }
+      50% {
+        text-shadow: 0 0 10px #fff, 0 0 20px #ff5f00, 0 0 30px #ff5f00;
+      }
+      100% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #ff5f00, 0 0 15px #ff5f00;
+      }
+    }
+
+    /* Glowing text effect */
+    .start-button:active span {
+      animation: textGlow 1s infinite alternate;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="background"></div>
+
+  <div class="container">
+    <button class="start-button" onclick="startAction()">
+      <span>Start</span>
+    </button>
+  </div>
+
+  <script>
+    // JavaScript to handle the button click and add some interaction
+    function startAction() {
+      // Simulating an action with a delay before redirect
+      const button = document.querySelector('.start-button');
+      button.style.pointerEvents = 'none'; // Disable clicking while redirecting
+      button.innerHTML = 'Loading...'; // Update button text
+      button.style.backgroundColor = '#f39c12'; // Change button color for action feedback
+
+      // Simulating a 1-second delay before redirection
+      setTimeout(function() {
+        window.location.href = 'dicee.html'; // Redirect to dicee.html after delay
+      }, 1000);
+    }
+  </script>
+
+</body>
+</html>

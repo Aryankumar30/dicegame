@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Dicee</title>
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lobster&display=swap" rel="stylesheet">
+  <style>
+    /* General reset and layout */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Indie Flower', cursive;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+      background: linear-gradient(135deg, #fcbad3, #ff7eb6); /* Pink gradient background by default */
+      transition: background 1s ease-in-out; /* Smooth background transition */
+    }
+
+    h2 {
+      font-size: 2rem; /* Larger font size for names */
+      margin: 10px;
+      font-weight: bold;
+      display: block;
+      background: linear-gradient(135deg, #ff85a2, #f7468a); /* Gradient color for names */
+      -webkit-background-clip: text; /* Apply the gradient to the text */
+      color: transparent; /* Make text transparent so the gradient shows */
+      text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 0, 0, 0.4); /* Strong shadow for visibility */
+      letter-spacing: 1px; /* Slight letter spacing for better readability */
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column; /* Stack the content vertically */
+      justify-content: center;
+      align-items: center;
+      width: 80%;
+      max-width: 700px;
+      margin-bottom: 20px;
+    }
+
+    .dice {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .dice img {
+      width: 150px;
+      height: 150px;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .dice:hover img {
+      transform: rotate(360deg);
+    }
+
+    .btn-box {
+      margin-top: 20px;
+    }
+
+    button {
+      background-color: #ff6f61;
+      border: none;
+      padding: 12px 30px;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #e65c50;
+      transform: scale(1.05);
+    }
+
+    button:focus {
+      outline: none;
+    }
+
+    .winner {
+      font-size: 2rem;
+      font-family: 'Lobster', cursive;
+      color: #fff;
+      margin-top: 20px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      transform: translateY(-30px);
+      animation: winner-appear 1s forwards;
+    }
+
+    /* Animation for winner */
+    @keyframes winner-appear {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>Player One: Tanisha</h2>
+    <h2>Player Two: Aryan</h2>
+    <div class="dice">
+      <p>Player 1</p>
+      <img class="img1" src="./images/dice6.png" alt="Player 1 Dice">
+    </div>
+
+    <div class="dice">
+      <p>Player 2</p>
+      <img class="img2" src="./images/dice6.png" alt="Player 2 Dice">
+    </div>
+  </div>
+
+  <div class="btn-box">
+    <button id="refreshButton">
+      Play Again
+    </button>
+  </div>
+
+  <div id="winnerMessage" class="winner"></div>
+
+  <script>
+    // Basic functionality for "Play Again" button
+    document.getElementById('refreshButton').addEventListener('click', function() {
+      const randomNum1 = Math.floor(Math.random() * 6) + 1;
+      const randomNum2 = Math.floor(Math.random() * 6) + 1;
+
+      // Update dice images based on random numbers
+      document.querySelector('.img1').src = `./images/dice${randomNum1}.png`;
+      document.querySelector('.img2').src = `./images/dice${randomNum2}.png`;
+
+      // Determine winner and display message
+      let winnerMessage = '';
+      let backgroundColor = '#fcbad3'; // Default pink color (Tanisha wins)
+      if (randomNum1 > randomNum2) {
+        winnerMessage = "Player 1 (Tanisha) Wins!";
+      } else if (randomNum2 > randomNum1) {
+        winnerMessage = "Player 2 (Aryan) Wins!";
+        backgroundColor = '#a2c2f4'; // Blue color for Aryan win
+      } else {
+        winnerMessage = "It's a Tie!";
+        backgroundColor = '#d3d3d3'; // Grey color for tie
+      }
+
+      // Display the winner with an animation
+      const winnerElement = document.getElementById('winnerMessage');
+      winnerElement.textContent = winnerMessage;
+      winnerElement.style.animation = 'none'; // Reset animation
+      winnerElement.offsetHeight; // Trigger reflow to restart animation
+      winnerElement.style.animation = 'winner-appear 1s forwards';
+
+      // Change background color based on result
+      document.body.style.background = backgroundColor;
+    });
+  </script>
+
+</body>
+
+<footer>
+  <!-- You can add footer content here if needed -->
+</footer>
+
+</html>
